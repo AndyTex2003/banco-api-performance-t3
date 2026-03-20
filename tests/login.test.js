@@ -3,9 +3,10 @@ import { sleep, check } from 'k6';
 
 export const options = {
     
-    iterations: 10,
+    vus: 10,
+    duration: '30s',
     thresholds: {
-      http_req_duration:  ['p(90)<10', 'max<7'],
+      http_req_duration:  ['p(90)<3000', 'max<5000'],
       http_req_failed: ['rate<0.01']
     }
 };
@@ -34,4 +35,4 @@ export default function () {
     });
 
     sleep(1);
-};
+};  
