@@ -1,5 +1,7 @@
 import http from 'k6/http';
 import { sleep, check } from 'k6';
+    // JSON.parse permite pegar um texto do open e converte-lo em um objeto Javascript
+const postLogin = JSON.parse(open('../fixtures/postLogin.json'))
 
 export const options = {    
     stages: [
@@ -20,11 +22,9 @@ export const options = {
 export default function () {
   // Faça uma solicitação POST para o URL de destino.  
     const url = 'http://localhost:3000/login';
-    
-    const payload = JSON.stringify({
-        username: 'julio.lima',
-        senha: '123456'
-    });
+
+    console.log(postLogin)
+    const payload = JSON.stringify(postLogin);
 
     const params = {
       headers: {
