@@ -22,8 +22,7 @@ export const options = {
 export default function () {
   // Faça uma solicitação POST para o URL de destino.  
     const url = 'http://localhost:3000/login';
-
-    console.log(postLogin)
+    
     const payload = JSON.stringify(postLogin);
 
     const params = {
