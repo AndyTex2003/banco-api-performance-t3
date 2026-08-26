@@ -1,147 +1,182 @@
-# 🧪 Testes de Performance - API Banco
+# Banco API Performance - Testes de Performance com k6
 
-## 📌 Introdução
+Projeto de **testes de performance de API REST** desenvolvido com **k6 e JavaScript**, utilizando uma API bancária como sistema sob teste.
 
-Este repositório contém testes de performance desenvolvidos em JavaScript utilizando o **k6**, com o objetivo de avaliar o comportamento de uma API bancária sob diferentes condições de carga.
-
-Os testes foram implementados utilizando a **API do Banco do Júlio de Lima**, amplamente utilizada para fins educacionais e prática de testes de software.
-
-Os cenários cobrem fluxos essenciais da aplicação, como autenticação e transferências entre contas, garantindo que a API responda de forma eficiente, estável e confiável.
+O projeto foi criado para avaliar o comportamento da API sob diferentes condições de carga, utilizando cenários de execução, checks e thresholds para validar as respostas, acompanhar os tempos de resposta e analisar o comportamento da aplicação durante os testes.
 
 ---
 
-## 🚀 Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 - JavaScript
-- k6 (ferramenta de testes de performance)
+- k6
 - Node.js
-
 ---
 
-## 📂 Estrutura do Repositório
+## Estrutura do Projeto
 
-```
+```text
+banco-api-performance-t3/
+│
+├── config/
+│   └── config.local.json
+│
+├── fixtures/
+│   └── postLogin.json
+│
+├── helpers/
+│   └── autenticacao.js
+│
 ├── tests/
 │   ├── login.test.js
 │   └── transferencias.test.js
-├── helpers/
-│   └── autenticacao.js
-├── fixtures/
-├── config/
+│
 ├── utils/
+│   └── variaveis.js
+│
+├── .gitignore
 └── README.md
 ```
 
 ---
 
-## 🧩 Objetivo de cada grupo de arquivos
+## Organização dos Arquivos
 
-### 📁 tests/
-Contém os scripts de testes de performance executados pelo k6.
+### `tests/`
 
-- `login.test.js`: valida o endpoint de autenticação  
-- `transferencias.test.js`: testa o fluxo de transferências entre contas  
+Contém os scripts de testes de performance executados com k6.
 
----
+- `login.test.js`: testes relacionados ao fluxo de autenticação.
+- `transferencias.test.js`: testes relacionados ao fluxo de transferências entre contas.
 
-### 📁 helpers/
-Responsável por funções auxiliares reutilizáveis.
+### `helpers/`
 
-- `autenticacao.js`: realiza autenticação e retorna o token para os testes  
+Reúne funções auxiliares reutilizadas durante a execução dos testes.
 
----
+- `autenticacao.js`: centraliza o fluxo de autenticação e obtenção do token utilizado pelos testes.
 
-### 📁 fixtures/
-Contém dados estáticos utilizados nos testes.
- 
+### `fixtures/`
 
----
+Contém dados estáticos utilizados durante as execuções.
 
-### 📁 config/
-Arquivos de configuração do projeto, como definição de cenários de teste e parâmetros.
+- `postLogin.json`: massa de dados utilizada no fluxo de autenticação.
 
----
+### `config/`
 
-### 📁 utils/
-Funções utilitárias para apoio aos testes.
+Armazena configurações e parâmetros utilizados pelo projeto.
 
-Exemplo:
-- geração de dados dinâmicos  
-- formatação de informações  
+- `config.local.json`: configurações locais utilizadas durante a execução dos testes.
+
+### `utils/`
+
+Reúne valores e recursos auxiliares compartilhados pelos testes.
+
+- `variaveis.js`: centraliza variáveis utilizadas pela automação.
 
 ---
 
-## 🎯 Objetivo dos Testes
+## Objetivo dos Testes
 
-- Avaliar o tempo de resposta da API  
-- Validar a estabilidade sob carga  
-- Garantir o funcionamento correto de endpoints críticos  
-- Identificar possíveis gargalos e falhas  
+- Avaliar os tempos de resposta da API.
+- Analisar o comportamento da aplicação sob carga.
+- Verificar o comportamento de endpoints críticos durante as execuções.
+- Identificar possíveis gargalos, degradações de desempenho e falhas.
 
 ---
 
-## ⚙️ Instalação
+## Instalação
 
-1. Clone o repositório:
+### Clonar o repositório
 
 ```bash
 git clone https://github.com/AndyTex2003/banco-api-performance-t3.git
 ```
 
-2. Acesse a pasta do projeto:
+### Acessar a pasta do projeto
 
 ```bash
 cd banco-api-performance-t3
 ```
 
-3. Instale o k6 (caso ainda não tenha):
+### Instalar o k6
 
-https://k6.io/docs/get-started/installation/
+Para executar os testes, é necessário ter o **k6** instalado no ambiente.
+
+As instruções oficiais de instalação estão disponíveis na documentação do k6:
+
+[Documentação de instalação do k6](https://grafana.com/docs/k6/latest/set-up/install-k6/)
 
 ---
 
-## ▶️ Execução dos testes
+## Execução dos Testes
 
-Execute os testes com:
+### Teste de Login
+
+Executa o cenário de performance relacionado ao fluxo de autenticação.
 
 ```bash
 k6 run tests/login.test.js
-k6 run tests/transferencias.test.js
 ```
 
+### Teste de Transferências
+
+Executa o cenário de performance relacionado ao fluxo de transferências entre contas.
+
+```bash
+k6 run tests/transferencias.test.js
+
+```
 ---
 
-### 🔧 Variável de ambiente (opcional)
+## Variável de Ambiente (Opcional)
 
-É possível sobrescrever a URL base da API utilizando a variável de ambiente `BASE_URL`.
+A URL base da API pode ser sobrescrita por meio da variável de ambiente `BASE_URL`.
 
-Exemplo:
+Caso a variável não seja informada, será utilizada a URL definida no arquivo `config/config.local.json`.
+
+### Linux, macOS ou Git Bash
 
 ```bash
 BASE_URL=http://localhost:3000 k6 run tests/transferencias.test.js
 ```
 
-Caso a variável não seja informada, será utilizada a URL definida no arquivo de configuração local (`config.local.json`).
+### Windows PowerShell
+
+```powershell
+$env:BASE_URL="http://localhost:3000"
+k6 run tests/transferencias.test.js
+
+```
+Essa configuração permite executar os mesmos testes contra diferentes ambientes sem alterar o código-fonte.
 
 ---
 
-## 📊 Observações técnicas
+## Observações Técnicas
 
-Durante a execução dos testes, foi possível validar o comportamento da API em cenários de autenticação e transferência, garantindo consistência nas respostas e estabilidade nos endpoints testados.
+Durante a execução dos testes, foi possível avaliar o comportamento da API nos fluxos de autenticação e transferências sob as condições de carga definidas nos cenários.
 
----
-
-## 🧠 Aprendizados
-
-Durante o desenvolvimento deste projeto, foram aplicados conceitos como:
-
-- Testes de performance com k6  
-- Organização de código com helpers, fixtures e utils  
-- Uso de variáveis de ambiente com fallback para configuração local  
-- Validação de comportamento de APIs sob carga  
+Os checks e thresholds foram utilizados para validar as respostas e acompanhar métricas de desempenho, como tempos de resposta e comportamento da aplicação durante as execuções.
 
 ---
 
-## 👨‍💻 Autor
+## Aprendizados
 
-Desenvolvido por Anderson Batista dos Santos 🚀
+Durante o desenvolvimento deste projeto, foi possível aplicar e aprofundar conceitos relacionados a:
+
+- Testes de performance com k6
+- Criação de cenários de carga
+- Uso de checks e thresholds
+- Organização de código com helpers, fixtures e utils
+- Uso de variáveis de ambiente com fallback para configuração local
+- Análise de tempos de resposta e comportamento da API sob carga
+
+---
+
+## Autor
+
+**Anderson Batista dos Santos**
+
+QA | Testes de Software | Qualidade de Software
+
+- LinkedIn: [linkedin.com/in/anderson-santos-qa](https://www.linkedin.com/in/anderson-santos-qa/)
+- GitHub: [github.com/AndyTex2003](https://github.com/AndyTex2003)
