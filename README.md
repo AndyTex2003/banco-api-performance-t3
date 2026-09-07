@@ -1,6 +1,11 @@
 # Banco API Performance - Testes de Performance com k6
 
-Projeto de **testes de performance de API REST** desenvolvido com **k6 e JavaScript**, utilizando uma API bancária como sistema sob teste.
+![k6](https://img.shields.io/badge/k6-7D64FF?style=flat-square&logo=k6&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![Performance](https://img.shields.io/badge/Testes-Performance-2DA44E?style=flat-square)
+![API REST](https://img.shields.io/badge/API-REST-0A7EA4?style=flat-square)
+
+Projeto de **testes de performance de API REST** desenvolvido com **k6** e **JavaScript**, utilizando uma API bancária como sistema sob teste.
 
 O projeto foi criado para avaliar o comportamento da API sob diferentes condições de carga, utilizando cenários de execução, checks e thresholds para validar as respostas, acompanhar os tempos de resposta e analisar o comportamento da aplicação durante os testes.
 
@@ -8,9 +13,10 @@ O projeto foi criado para avaliar o comportamento da API sob diferentes condiç�
 
 ## Tecnologias Utilizadas
 
-- JavaScript
-- k6
-- Node.js
+![k6](https://img.shields.io/badge/k6-7D64FF?style=flat-square&logo=k6&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white)
+
 ---
 
 ## Estrutura do Projeto
@@ -44,7 +50,7 @@ banco-api-performance-t3/
 
 ### `tests/`
 
-Contém os scripts de testes de performance executados com k6.
+Contém os scripts de teste de performance executados com k6.
 
 - `login.test.js`: testes relacionados ao fluxo de autenticação.
 - `transferencias.test.js`: testes relacionados ao fluxo de transferências entre contas.
@@ -53,7 +59,7 @@ Contém os scripts de testes de performance executados com k6.
 
 Reúne funções auxiliares reutilizadas durante a execução dos testes.
 
-- `autenticacao.js`: centraliza o fluxo de autenticação e obtenção do token utilizado pelos testes.
+- `autenticacao.js`: centraliza o fluxo de autenticação e a obtenção do token utilizado pelos testes.
 
 ### `fixtures/`
 
@@ -77,10 +83,10 @@ Reúne valores e recursos auxiliares compartilhados pelos testes.
 
 ## Objetivo dos Testes
 
-- Avaliar os tempos de resposta da API.
-- Analisar o comportamento da aplicação sob carga.
-- Verificar o comportamento de endpoints críticos durante as execuções.
-- Identificar possíveis gargalos, degradações de desempenho e falhas.
+- Avaliar os **tempos de resposta** da API.
+- Analisar o comportamento da aplicação **sob carga**.
+- Verificar o comportamento de **endpoints críticos** durante as execuções.
+- Identificar possíveis **gargalos, degradações de desempenho e falhas**.
 
 ---
 
@@ -92,7 +98,7 @@ Reúne valores e recursos auxiliares compartilhados pelos testes.
 git clone https://github.com/AndyTex2003/banco-api-performance-t3.git
 ```
 
-### Acessar a pasta do projeto
+### Acessar o diretório
 
 ```bash
 cd banco-api-performance-t3
@@ -104,7 +110,7 @@ Para executar os testes, é necessário ter o **k6** instalado no ambiente.
 
 As instruções oficiais de instalação estão disponíveis na documentação do k6:
 
-[Documentação de instalação do k6](https://grafana.com/docs/k6/latest/set-up/install-k6/)
+[Documentação de instalação do k6](MANTENHA_AQUI_O_LINK_ATUAL)
 
 ---
 
@@ -112,7 +118,7 @@ As instruções oficiais de instalação estão disponíveis na documentação d
 
 ### Teste de Login
 
-Executa o cenário de performance relacionado ao fluxo de autenticação.
+Executa o teste de performance do fluxo de autenticação.
 
 ```bash
 k6 run tests/login.test.js
@@ -120,11 +126,10 @@ k6 run tests/login.test.js
 
 ### Teste de Transferências
 
-Executa o cenário de performance relacionado ao fluxo de transferências entre contas.
+Executa o teste de performance do fluxo de transferências entre contas.
 
 ```bash
 k6 run tests/transferencias.test.js
-
 ```
 ---
 
@@ -145,17 +150,17 @@ BASE_URL=http://localhost:3000 k6 run tests/transferencias.test.js
 ```powershell
 $env:BASE_URL="http://localhost:3000"
 k6 run tests/transferencias.test.js
-
 ```
+
 Essa configuração permite executar os mesmos testes contra diferentes ambientes sem alterar o código-fonte.
 
 ---
 
 ## Observações Técnicas
 
-Durante a execução dos testes, foi possível avaliar o comportamento da API nos fluxos de autenticação e transferências sob as condições de carga definidas nos cenários.
+Durante a execução dos testes, foi possível avaliar o comportamento da API nos fluxos de **autenticação** e **transferências** sob as condições de carga definidas nos cenários.
 
-Os checks e thresholds foram utilizados para validar as respostas e acompanhar métricas de desempenho, como tempos de resposta e comportamento da aplicação durante as execuções.
+Os **checks** e **thresholds** foram utilizados para validar as respostas e acompanhar métricas de desempenho, como **tempos de resposta** e comportamento da aplicação durante as execuções.
 
 ---
 
@@ -163,12 +168,12 @@ Os checks e thresholds foram utilizados para validar as respostas e acompanhar m
 
 Durante o desenvolvimento deste projeto, foi possível aplicar e aprofundar conceitos relacionados a:
 
-- Testes de performance com k6
-- Criação de cenários de carga
-- Uso de checks e thresholds
-- Organização de código com helpers, fixtures e utils
-- Uso de variáveis de ambiente com fallback para configuração local
-- Análise de tempos de resposta e comportamento da API sob carga
+- Testes de performance com **k6**
+- Criação de **cenários de carga**
+- Uso de **checks** e **thresholds**
+- Organização de código com `helpers`, `fixtures` e `utils`
+- Uso de **variáveis de ambiente** com fallback para configuração local
+- Análise de **tempos de resposta** e comportamento da API sob carga
 
 ---
 
