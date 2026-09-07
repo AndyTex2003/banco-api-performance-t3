@@ -110,7 +110,7 @@ Para executar os testes, é necessário ter o **k6** instalado no ambiente.
 
 As instruções oficiais de instalação estão disponíveis na documentação do k6:
 
-[Documentação de instalação do k6](MANTENHA_AQUI_O_LINK_ATUAL)
+[Documentação de instalação do k6](https://k6.io/docs/get-started/installation/)
 
 ---
 
